@@ -8,7 +8,7 @@ import { HNavbarModule } from './features/h-navbar/h-navbar.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
