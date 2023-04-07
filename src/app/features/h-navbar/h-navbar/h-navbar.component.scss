@@ -1,4 +1,4 @@
-@use '../../../style/index' as * ;
+@use '../../../style/index' as *;
 
 //---------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -16,12 +16,44 @@ header {
     .container {
         .h-navbar {
             @include display-flex();
-            @include justify-content(center);
+            @include justify-content(space-between);
+            padding: 5px 10px;
 
+            //-----------------
             .logo {
                 cursor: pointer;
+
                 img {
                     width: calc($size *8);
+                }
+            }
+
+            //-----------------
+            .pipeline-data {
+                @include display-flex();
+                .dashboard {
+                    @include display-flex();
+                    .data {
+                        margin: 0 10px;
+                        * {
+                            font-weight: bolder;
+                        }
+                        .d-title {
+                            color: $primary;
+                        }
+
+                        .d-value {
+                            color: $primary-dark;
+                        }
+                    }
+                }
+
+                .user {
+                    .u-profile-pic {
+                        width: calc($size*4);
+                        height: calc($size*4);
+
+                    }
                 }
             }
         }

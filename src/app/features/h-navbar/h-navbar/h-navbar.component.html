@@ -2,15 +2,48 @@
     <div class="container">
         <div class="h-navbar">
             <div class="logo">
-                    <img src="./assets/logo-webp.webp" alt="">
+                <img src="./assets/logo-webp.webp" alt="">
             </div>
-            <div class="data">
+            <div class="pipeline-data">
                 <div class="dashboard">
+
+                    <div class="data">
+                        <div class="d-title"> <span>Deals</span> </div>
+                        <div class="d-value"> <span>43</span></div>
+                    </div>
+                    <!-- -------------------- -->
+                    <div class="data">
+                        <div class="d-title"> <span>Total Value</span></div>
+                        <div class="d-value"> <span>4.13</span> </div>
+                    </div>
+                    <!-- -------------------- -->
+
 
                 </div>
                 <div class="user">
 
+                    <button mat-flat-button [matMenuTriggerFor]="menu" aria-label="login register">
+                        <img class="u-profile-pic" src="./assets/profile-pic-webp.webp" alt="profile-pic">
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item>
+                            <mat-icon aria-label="settings icon" fontIcon="settings"></mat-icon>
+                            <span>Setting</span>
+                        </button>
+                        <!-- ------------ -->
+                        <button mat-menu-item>
+                            <mat-icon aria-label="groups icon" fontIcon="groups"></mat-icon>
+                            <span>My Team</span>
+                        </button>
+                        <!-- ------------ -->
+                        <button mat-menu-item>
+                            <mat-icon aria-label="Logout icon" fontIcon="exit_to_app"></mat-icon>
+                            <span>Logout</span>
+                        </button>
+                    </mat-menu>
                 </div>
+                <!-- -------------------- -->
+
             </div>
         </div>
     </div>
