@@ -6,10 +6,69 @@
         <div class="header">
             <h3>Deals</h3>
         </div>
+        <div class="stage-container">
 
-        <div class="state">
+            <div cdkDropListGroup class="row">
+        
+                <div class="stage col-xsmall-12 col-small-6 col-medium-4 col-large-2">
+                    <p class="stage-name">Potential Value</p>
+                    <div cdkDropList [cdkDropListData]="potentialValue" class="deal-list"
+                        (cdkDropListDropped)="drop($event)">
+                        <div class="deal-box" *ngFor="let deal of potentialValue" cdkDrag>
+                            <deals-card [deal]="deal"></deals-card>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stage col-xsmall-12 col-small-6 col-medium-4 col-large-2">
+                    <p class="stage-name"> Focus</p>
+                    <div cdkDropList [cdkDropListData]="focus" class="deal-list" (cdkDropListDropped)="drop($event)">
+                        <div class="deal-box" *ngFor="let deal of focus" cdkDrag>
+
+                            <deals-card [deal]="deal"></deals-card>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- ---------------------------------- -->
+                <div class="stage col-xsmall-12 col-small-6 col-medium-4 col-large-2">
+                    <p class="stage-name"> Contact Made</p>
+
+                    <div cdkDropList [cdkDropListData]="contactMade" class="deal-list"
+                        (cdkDropListDropped)="drop($event)">
+                        <div class="deal-box" *ngFor="let deal of contactMade" cdkDrag>
+                            <deals-card [deal]="deal"></deals-card>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- ---------------------------------- -->
+                <div class="stage col-xsmall-12 col-small-6 col-medium-4 col-large-2">
+                    <p class="stage-name"> Offer Sent</p>
+                    <div cdkDropList [cdkDropListData]="offerSent" class="deal-list"
+                        (cdkDropListDropped)="drop($event)">
+                        <div class="deal-box" *ngFor="let deal of offerSent" cdkDrag>
+                            <deals-card [deal]="deal"></deals-card>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ---------------------------------- -->
+                <div class="stage col-xsmall-12 col-small-6 col-medium-4 col-large-2">
+                    <p class="stage-name"> Getting Ready</p>
+
+                    <div cdkDropList [cdkDropListData]="gettingReady" class="deal-list"
+                        (cdkDropListDropped)="drop($event)">
+                        <div class="deal-box" *ngFor="let deal of gettingReady" cdkDrag>
+                            <deals-card [deal]="deal"></deals-card>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
+    
 
     </div>
 

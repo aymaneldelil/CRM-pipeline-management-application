@@ -7,9 +7,8 @@ import { ActivitesComponent } from './activites/activites.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'deals',
-    pathMatch: 'full',
     children: [
+      { path: '', redirectTo:'deals' ,pathMatch:'full' },
       { path: 'deals', component: DealsComponent },
       { path: 'statistics', component: StatisticsComponent },
       { path: 'activites', component: ActivitesComponent },

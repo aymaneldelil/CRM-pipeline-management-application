@@ -1,0 +1,59 @@
+@use '../../../../style/index' as *;
+// $white: #ffffff;
+
+// $primary: #9ca9b7;
+// $primary-dark: #2c374c;
+// $primary-lite: #f5f7fa;
+// //------------------------------------
+// $blue: #3483e3;
+// $blue-dark: #233ba3;
+// //------------------------------------
+// $success: #d8f5db;
+// $success-dark: #50af56;
+// //------------------------------------
+// $warn:#fff2f4;
+// $warn-dark:#e62766;
+
+.deal-card {
+
+    .d-company {
+        color: $primary-dark;
+    }
+    // --------------------
+    .state {
+        margin: $size 0;
+       .d-state , .d-probability {
+            font-size: calc($size*1.2);
+            border-radius: $size;
+            padding: 2px 5px;
+            font-weight: bold;
+            color: $white;
+            margin-right: $size;
+        }
+        .d-state {
+            background-color: $primary;
+        }
+        .d-probability{
+            background-color: $blue;
+
+        }
+    }
+        // --------------------
+.description{
+  
+
+    .data{
+        *{
+            color:$primary ;
+
+        }
+        .mat-icon {
+            font-size: calc($size *1.6);
+        }
+        span{
+            font-size: calc($size*1.2);
+            font-weight: bold;
+        }
+    }
+}
+}

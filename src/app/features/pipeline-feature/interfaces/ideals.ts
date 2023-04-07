@@ -1,3 +1,4 @@
+
 export interface Ideals {
     id: number
     first_name: string

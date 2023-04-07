@@ -14,12 +14,16 @@
 
 body{
     font-family: 'Quicksand', sans-serif;
-    background-color: colors.$primary-lite;
+    background-color: lighten(colors.$primary-lite, 15);
+    .mat-icon {
+      vertical-align: middle;
+  }
 }
 
 .container {    
     @include mq.breakpoints(xsmall) {
       max-width: 750px;
+      width: 95%;
       padding-left: 15px;
       padding-right: 15px;
       margin: 0 auto;

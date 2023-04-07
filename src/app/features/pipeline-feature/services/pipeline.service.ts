@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { PipelineTabs } from '../interfaces/pipeline-tabs';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, map, switchMap } from 'rxjs';
 import { Ideals } from '../interfaces/ideals';
+import { IdealsRoot } from '../interfaces/ideals-root';
 
 @Injectable()
 export class PipelineService {
@@ -51,9 +52,17 @@ export class PipelineService {
   constructor(private http: HttpClient) {}
 
   //---------------------------------------------------------------------------------------------------------------------------------------------------
-  public getDeals(): Observable<Ideals> {
-    return this.http.get<Ideals>(
-      'https://my-json-server.typicode.com/mabukoush1/contacts/db'
-    );
+  public getDeals(): Observable<Array<Ideals>> {
+    return this.http
+      .get<IdealsRoot>(
+        'https://my-json-server.typicode.com/mabukoush1/contacts/db'
+      )
+      .pipe(
+        map((m) => {
+          return m.deals;
+        })
+      );
   }
+  //---------------------------------------------------------------------------------------------------------------------------------------------------
+  public dividedStatusIntoStage() {}
 }

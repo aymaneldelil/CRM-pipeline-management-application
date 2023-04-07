@@ -1,0 +1,39 @@
+<section class="deal-card">
+    <h3 class="d-company">{{deal.company}}</h3>
+    <div class="state">
+        <span class="d-state">
+            {{deal.state}}
+        </span>
+        <span class="d-probability" >
+            {{deal.probability_status}}
+        </span>
+        </div>
+        <div class="description">
+            <div class="data">
+
+                <mat-icon aria-label="phone icon" fontIcon="person"></mat-icon>
+                <span class="d-name">
+
+                    {{ deal.first_name + deal.last_name}}
+                </span>
+            </div>
+            <div class="data">
+                <mat-icon aria-label="phone icon" fontIcon="call"></mat-icon>
+                <span class="d-phone">
+                    {{ deal.phone}}
+                </span>
+            </div>
+            <div class="data">
+                <mat-icon aria-label="phone icon" fontIcon="mail"></mat-icon>
+                <span class="d-email">
+                    {{deal.email}}
+                </span>
+            </div>
+            <div class="data">
+                <mat-icon aria-label="phone icon" fontIcon="calendar_today"></mat-icon>
+
+                <span class="d-date">{{deal.date}}</span>
+            </div>
+        </div>
+
+</section>

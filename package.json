@@ -36,5 +36,17 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
     "typescript": "~4.9.4"
-  }
+  },
+  "description": "PipeLine-managment-application",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aymaneldelil/CRM-pipeline-management-application.git"
+  },
+  "author": "Ayman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aymaneldelil/CRM-pipeline-management-application/issues"
+  },
+  "homepage": "https://github.com/aymaneldelil/CRM-pipeline-management-application#readme"
 }
