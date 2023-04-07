@@ -19,7 +19,23 @@
 .deals {
 
 
-  .header {}
+  .header {
+    @include display-flex();
+    // @include justify-content(space-between);
+
+    padding: $size;
+    
+    .mat-mdc-form-field{
+      margin-left: 8px;
+    }
+    
+
+    h3 {
+      color: $primary-dark;
+      font-weight: bolder;
+
+    }
+  }
 
   //---------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -48,6 +64,7 @@
           overflow: hidden;
           display: block;
           min-height: 150px;
+      
 
         }
 

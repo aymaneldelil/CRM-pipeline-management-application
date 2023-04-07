@@ -6,7 +6,20 @@ import {
 } from '@angular/cdk/drag-drop';
 import { PipelineService } from 'src/app/features/pipeline-feature/services/pipeline.service';
 import { Ideals } from 'src/app/features/pipeline-feature/interfaces/ideals';
-import { filter, map, switchMap, tap } from 'rxjs';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  filter,
+  map,
+  switchMap,
+  tap,
+} from 'rxjs';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -24,7 +37,7 @@ enum _statusEnum {
   styleUrls: ['./deals.component.scss'],
 })
 export class DealsComponent implements OnInit {
-
+  public isloading: boolean = true;
   //---------------------------------------------------------------------------------------------------------------------------------------------------
   public potentialValue: Array<Ideals> = [];
   public focus: Array<Ideals> = [];
@@ -32,7 +45,8 @@ export class DealsComponent implements OnInit {
   public offerSent: Array<Ideals> = [];
   public gettingReady: Array<Ideals> = [];
   //---------------------------------------------------------------------------------------------------------------------------------------------------
-  constructor(private pipelineSVC: PipelineService) {}
+  public search_fg!: FormGroup;
+  constructor(private pipelineSVC: PipelineService, private _fb: FormBuilder) {}
   //---------------------------------------------------------------------------------------------------------------------------------------------------
   ngOnInit(): void {
     this.initialValues();
@@ -40,26 +54,16 @@ export class DealsComponent implements OnInit {
   //---------------------------------------------------------------------------------------------------------------------------------------------------
   private initialValues(): void {
     this.sortDeals();
+
+    this.search_fg = this._fb.group({
+      search_fc: ['', Validators.minLength(3)],
+    });
+
+    this.searchInDeals();
   }
+
   //---------------------------------------------------------------------------------------------------------------------------------------------------
- public drop(event: CdkDragDrop<Ideals[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    }
-  }
-  //---------------------------------------------------------------------------------------------------------------------------------------------------
- private sortDeals() {
+  private sortDeals() {
     this.pipelineSVC
       .getDeals()
       .pipe(
@@ -91,7 +95,45 @@ export class DealsComponent implements OnInit {
           });
         })
       )
-      .subscribe();
+      .subscribe({
+        complete: () => {
+          this.isloading = !this.isloading;
+        },
+      });
   }
 
+  //---------------------------------------------------------------------------------------------------------------------------------------------------
+  public drop(event: CdkDragDrop<Ideals[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    }
+  }
+
+  //---------------------------------------------------------------------------------------------------------------------------------------------------
+
+  searchInDeals() {
+    this.search_fg
+      .get('search_fc')
+      ?.valueChanges.pipe(debounceTime(400))
+      .subscribe({
+        next: (searchValue: string) => {
+          this.potentialValue = this.potentialValue.filter((deal: Ideals) => {
+            return deal.first_name
+              .toLowerCase()
+              .includes(searchValue.toLowerCase());
+          });
+        },
+      });
+  }
 }
