@@ -4,7 +4,7 @@
 
 header {
     background-color: $white;
-    flex: 0 0 80px;
+    // flex: 0 0 80px;
     position: fixed;
     z-index: 11;
     height: 45px;
@@ -13,11 +13,11 @@ header {
     transition: all ease-in-out 0.3s;
     box-shadow: $box-shadow;
 
-    .container {
+  
         .h-navbar {
             @include display-flex();
             @include justify-content(space-between);
-            padding: 5px 10px;
+            padding: 5px 30px;
 
             //-----------------
             .logo {
@@ -57,7 +57,7 @@ header {
                 }
             }
         }
-    }
+    
 }
 
 .changeOnScroll {

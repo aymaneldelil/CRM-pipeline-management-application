@@ -4,7 +4,6 @@
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
-
     .router-outlet{
         flex: 1 0 auto;
         padding: 64px 0;
